@@ -1,0 +1,46 @@
+#searchInput {
+    height: 33px;
+    width: 150px;
+    border: 1px solid #666666;
+    text-indent: 5px;
+}
+
+#search {
+    height: 33px;
+    width: 78px;
+    border: none;
+    background: #FF5722;
+    color: white;
+}
+
+#box-tm {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15px 0;
+}
+
+#box-tm label {
+    margin: 0 5px;
+}
+
+/*搜索栏相关样式*/
+.label-width-s {
+    width: 60px !important;
+}
+
+.label-width-m {
+    width: 100px !important;
+}
+
+.label-width-l {
+    width: 120px !important;
+}
+
+.input-width-m {
+    width: 130px !important;
+}
+
+.input-width-l {
+    width: 180px !important;
+}

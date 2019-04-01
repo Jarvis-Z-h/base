@@ -1,0 +1,20 @@
+/* 最基本的定义如：<div id="ztree-wrap" class="ztree-wrap"><ul id="" class="ztree"></ul></div>，不能再省略任何id或样式 */
+/* 包裹ztree的元素，必须带有这个属性 */
+.ztree-wrap {
+    background-color: white;
+    display: none;
+    position: absolute;
+    border-left: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-right: 1px solid #333333;
+    box-sizing: border-box;
+}
+
+/* 给ztree的样式定义，基础的样式 */
+/* 如：<ul id="" class="ztree ztree-general"></ul> */
+.ztree-general {
+    margin-top: 0;
+    width: 300px;
+    height: 400px;
+    overflow: auto;
+}

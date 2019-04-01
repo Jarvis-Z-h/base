@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- 注：H+是一个后台主题UI框架，本项目框架主体使用H+框架 -->
+    <!-- 布局并非上下结构，而是左右结构，页面的顶部的登录信息栏是算在右侧部分的顶部 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <!-- H+框架需要的meta开始 -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="renderer" content="webkit"></meta>
+    <meta http-equiv="Cache-Control" content="no-siteapp"></meta>
+    <!-- H+框架需要的meta结束 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"></meta>
+    <title>主页</title>
+    <!-- H+需要的css文件开始 -->
+    <!-- 浏览器标签页上的logo -->
+    <link href="img/logo.ico" type="image/x-icon"  rel="shortcut icon"></link>
+    <link href="css/bootstrap.min14ed.css?v=3.3.6"  rel="stylesheet"></link>
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet"></link>
+    <link href="css/animate.min.css" rel="stylesheet"></link>
+    <link href="css/style.css" rel="stylesheet"></link>
+    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet"></link>
+    <!-- H+需要的css文件结束 -->
+    <!-- 右下角弹窗(toastr)的css文件开始 -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"></link>
+    <!-- 右下角弹窗(toastr)的css文件结束 -->
+    <style type="text/css">
+        /* 下面这两个样式，让导航栏缩小10px，页面整体向上挪10px */
+        .navbar-fixed-top {
+            background: #2B2C31;
+            line-height: 50px;
+        }
+
+        .fixed-nav #wrapper {
+            padding-top: 50px;
+            box-sizing: border-box;
+        }
+
+        .navbar-fixed-top img {
+            height: 30px;
+            margin-left: 30px;
+        }
+
+        .navbar-fixed-top span {
+            margin-left: 10px;
+            color: #fff;
+        }
+
+        /* #page-wrapper{
+          height: auto;
+        } */
+        .border-bottom {
+            border: 0 !important;
+        }
+
+        .navbar-static-side {
+            background: #2A2D32;
+        }
+
+        .nav > li.active {
+            background: #323338;
+        }
+
+        .nav > li.active > a {
+            background: #2B2E33;
+        }
+
+        .navbar-default .nav > li > a:focus, .nav > li > a:hover {
+            background-color: #36383c !important;
+        }
+
+        .page-tabs a.active {
+            background: #3B3C41;
+        }
+
+        .roll-right.btn-group {
+            right: 0;
+        }
+
+        .roll-right.J_tabRight {
+            right: 80px;
+        }
+
+        .roll-right.J_tabExit {
+            height: 50px;
+            color: #fff;
+            right: 5px;
+            position: absolute;
+            background: transparent;
+        }
+
+        .welcomeuser {
+            position: absolute;
+            right: 100px;
+        }
+
+        .the-hidden {
+            display: none;
+        }
+
+        .the-inline-block{
+            display: inline-block;
+        }
+    </style>
+    <link href="beessoft/css/HPlusTheme.css"  rel="stylesheet"></link>
+</head>
+<body class="fixed-sidebar full-height-layout gray-bg fixed-nav">
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<div id="wrapper">
+
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close">
+            <i class="fa fa-times-circle"></i>
+        </div>
+
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <!--一级菜单-->
+                <li class="nav-li-tm">
+                    <a id="menu1" class="J_menuItem stopaction" data-index="0">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        <span class="nav-label">用户管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul aria-expanded="false" class="nav nav-second-level nav2 collapse" style="padding: 0px; height: 0px;">
+                        <li class="nav-li-tm">
+                            <a href="/jump/users" target="_blank" class="J_menuItem" data-index="1">
+                                账号设置
+                            </a>
+                            <ul aria-expanded="true" class="nav nav-second-level collapse nav2" style="padding: 0px;"></ul>
+                        </li>
+                        <li class="nav-li-tm">
+                            <a th:href="@{/jump/pasManager}" class="J_menuItem" data-index="2">
+                                密码修改
+                            </a>
+                            <ul aria-expanded="true" class="nav nav-second-level collapse nav2" style="padding: 0px;"></ul>
+                        </li>
+                        <li class="nav-li-tm">
+                            <a href="/jump/roleManager" th:href="@{/jump/roleManager}" class="J_menuItem" data-index="3">
+                                权限管理
+                            </a>
+                            <ul aria-expanded="true" class="nav nav-second-level collapse nav2" style="padding: 0px;"></ul>
+                        </li>
+                    </ul>
+                </li>
+                <!--第二个一级菜单-->
+                <li class="nav-li-tm">
+                    <a id="menu2" class="J_menuItem stopaction" data-index="0">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        <span class="nav-label">标准管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul aria-expanded="false" class="nav nav-second-level nav2 collapse" style="padding: 0px; height: 0px;">
+                        <!--如果想添加二级菜单。请在这里面添加<li>-->
+                    </ul>
+                </li>
+                <!--第三个一级菜单-->
+                <li class="nav-li-tm">
+                    <a id="menu3" class="J_menuItem stopaction" data-index="0">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        <span class="nav-label">冶炼过程记录表</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul aria-expanded="false" class="nav nav-second-level nav2 collapse" style="padding: 0px; height: 0px;">
+                        <li class="nav-li-tm">  <!--一个小图案，随时可以改的-->
+                            <a href="/jump/jump?type=role_maneger" class="J_menuItem" data-index="1">
+                                LF精炼过程记录表
+                            </a>
+                            <ul aria-expanded="true" class="nav nav-second-level collapse nav2" style="padding: 0px;"></ul>
+                        </li>
+                        <li class="nav-li-tm">
+                            <a href="/jump/jump?type=power_maneger" class="J_menuItem" data-index="2">
+                                EAF电炉冶炼过程记录表
+                            </a>
+                            <ul aria-expanded="true" class="nav nav-second-level collapse nav2" style="padding: 0px;"></ul>
+                        </li>
+                        <li class="nav-li-tm">
+                            <a href="/jump/jump?type=power_maneger" class="J_menuItem" data-index="2">
+                                CC连铸过程记录表
+                            </a>
+                            <ul aria-expanded="true" class="nav nav-second-level collapse nav2" style="padding: 0px;"></ul>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+                <!--第四个个一级菜单-->
+                <li class="nav-li-tm">
+                    <a id="menu4" class="J_menuItem stopaction" data-index="0">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        <span class="nav-label">质量管理报告</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul aria-expanded="false" class="nav nav-second-level nav2 collapse" style="padding: 0px; height: 0px;">
+                        <!--如果想添加二级菜单。请在这里面添加<li>-->
+                    </ul>
+                </li>
+
+                <!--第五个个一级菜单-->
+                <li class="nav-li-tm">
+                    <a id="menu5" class="J_menuItem stopaction" data-index="0">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        <span class="nav-label">质量分析</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul aria-expanded="false" class="nav nav-second-level nav2 collapse" style="padding: 0px; height: 0px;">
+                        <li class="nav-li-tm">  <!--一个小图案，随时可以改的-->
+                            <a href="/jump/jump?type=role_maneger" class="J_menuItem" data-index="1">
+                                可视化-数据源
+                            </a>
+                            <ul aria-expanded="true" class="nav nav-second-level collapse nav2" style="padding: 0px;"></ul>
+                        </li>
+                        <li class="nav-li-tm">
+                            <a href="/jump/jump?type=power_maneger" class="J_menuItem" data-index="2">
+                                可视化-仪表盘
+                            </a>
+                            <ul aria-expanded="true" class="nav nav-second-level collapse nav2" style="padding: 0px;"></ul>
+                        </li>
+                        <li class="nav-li-tm">
+                            <a href="/jump/jump?type=power_maneger" class="J_menuItem" data-index="2">
+                                数据查询
+                            </a>
+                            <ul aria-expanded="true" class="nav nav-second-level collapse nav2" style="padding: 0px;"></ul>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <!--第六个一级菜单-->
+                <li class="nav-li-tm">
+                    <a id="menu4" class="J_menuItem stopaction" data-index="0">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        <span class="nav-label">质检书</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul aria-expanded="false" class="nav nav-second-level nav2 collapse" style="padding: 0px; height: 0px;">
+                        <!--如果想添加二级菜单。请在这里面添加<li>-->
+                    </ul>
+                </li>
+
+                <!--第七个一级菜单-->
+                <li class="nav-li-tm">
+                    <a id="menu4" class="J_menuItem stopaction" data-index="0">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        <span class="nav-label">日志管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul aria-expanded="false" class="nav nav-second-level nav2 collapse" style="padding: 0px; height: 0px;">
+                        <!--如果想添加二级菜单。请在这里面添加<li>-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+
+        <!-- 顶部 -->
+        <div class="row border-bottom">
+            <nav class="navbar navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+                <img src="img/login-logo.png"></img>
+                <span>炼钢过程质量管理系统</span>
+
+                <div id="head_ico_div" class="the-hidden" style="position: absolute;right: 500px;">
+                    <img id="head_ico" src="image/userCenter/head_img_0.png"
+                         style="width: 30px;height:30px;border-radius: 15px !important;"></img>
+                </div>
+
+                <span class="welcomeuser">欢迎<a id="userName">${session.user.name}</a>登陆炼钢过程质量管理系统<div id="creditsDiv" class="the-hidden">&emsp;您当前积分:<span id="credits" style="margin-left: 0px;color: #ffd41e;">--</span>分&emsp;当前星级:<span id="star" style="margin-left: 0px;color: #ffd41e;">--</span></div></span>
+                <a href="/" class="roll-nav roll-right J_tabExit">
+
+                    <i class="fa fa fa-sign-out"></i>
+                    <span>退出</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- tab部分 -->
+        <div class="row content-tabs">
+
+            <button class="roll-nav roll-left J_tabLeft">
+                <i class="fa fa-angle-double-left"></i>
+            </button>
+
+            <nav class="page-tabs J_menuTabs">
+                <div class="page-tabs-content">
+                    <a href="javascript:;" class="active J_menuTab"
+                       data-id="/base.html">首页
+                    </a>
+                    <!--默认主页需在对应的选项卡a元素上添加data-id="默认主页的url"-->
+                </div>
+            </nav>
+
+            <button class="roll-nav roll-right J_tabRight">
+                <i class="fa fa-angle-double-right"></i>
+            </button>
+
+            <div class="btn-group roll-nav roll-right">
+                <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作
+                    <span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                    <li class="J_tabShowActive">
+                        <a>定位当前选项卡</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="J_tabCloseAll">
+                        <a>关闭全部选项卡</a>
+                    </li>
+                    <li class="J_tabCloseOther">
+                        <a>关闭其他选项卡</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- iframe部分 -->
+        <div class="row J_mainContent" id="content-main">
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%"
+                    src="/index_v1.jsp" frameborder="0"
+                    data-id="/index_v1.jsp"></iframe>
+            <!--默认主页需在对应的页面显示iframe元素上添加name="iframe0"和data-id="默认主页的url"-->
+        </div>
+
+    </div>
+    <!--右侧部分结束-->
+</div>
+<!-- 隐藏input，用于接收登录之后，后台传输的数据，动态生成各级菜单，包括超链接等的信息 -->
+<input type="hidden" id="json" value="${json}"></input>
+<script type="text/javascript" src="scripts/basevalue.js" th:src="@{/script/basevalue.js}"></script>
+<!-- H+需要的JS开始-->
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.6" ></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}" ></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js" th:src="@{js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+<script src="js/plugins/layer/layer.min.js" th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script src="js/hplus.min.js?v=4.1.0"></script>
+<script src="js/contabs.min.js" th:src="@{/js/contabs.min.js}"></script>
+<script src="js/plugins/pace/pace.min.js" th:src="@{/js/plugins/pace/pace.min.js}"></script>
+<!-- H+需要的JS结束 -->
+<!-- 右下角弹窗的JS开始 -->
+<script src="js/plugins/toastr/toastr.min.js" th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
+<!-- 右下角弹窗的JS结束 -->
+<script>
+
+   /* function setHeadIco(url){
+        $('#head_ico').attr('src', '${pageContext.request.contextPath}'+ url);
+    }*/
+
+    function setUserName(name) {
+        $('#userName').text(name);
+        // 头像默认至少要偏移的距离
+        var baseLength = 455;
+        // 每增加一个字需要偏移的距离
+        var fontLength = 15;
+        var count = name.length - 1;
+        $('#head_ico_div').css('right', baseLength + fontLength * count);
+    }
+
+    // 当左侧边栏变小为小图片后，点击左侧边栏恢复原状(本来自带的效果失效，所以在这里写)
+    $(".stopaction").on("click", function (event) {
+        if ($("body").hasClass("mini-navbar")) {
+            $("body").removeClass("mini-navbar");
+        }
+    });
+
+    // 新打开选项卡（不是通过点击导航栏打开选项卡，而是在内容页面通过按钮触发JS打开选项卡）
+    function gcc(o, m, l) {
+        k = true;
+        if (o == undefined || $.trim(o).length == 0) {
+            return false;
+        }
+        $(".J_menuTab").each(function () {
+            if ($(this).data("id") == o) {
+                if (!$(this).hasClass("active")) {
+                    $(this).addClass("active").siblings(".J_menuTab").removeClass("active");
+                    //g(this);
+                    $(".J_mainContent .J_iframe").each(function () {
+                        if ($(this).data("id") == o) {
+                            $(this).show().siblings(".J_iframe").hide();
+                            return false;
+                        }
+                    })
+                }
+                k = false;
+                return false;
+            }
+        });
+        if (k) {
+            var p = '<a href="javascript:;" name="iframe' + m + '" class="active J_menuTab m_tab" data-id="' + o + '">' + l + ' <i class="fa fa-times-circle"></i></a>';
+            $(".J_menuTab").removeClass("active");
+            var n = '<iframe class="J_iframe" name="iframe' + m + '"  width="100%" height="100%" src="' + o + '" frameborder="0" data-id="' + o + '"></iframe>';
+            $(".J_mainContent").find("iframe.J_iframe").hide().parents(".J_mainContent").append(n);
+            $(".J_menuTabs .page-tabs-content").append(p);
+        }
+        return false;
+    }
+
+    // 定义右下角弹窗信息
+    function showMsg(msg, itype, title) {
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            positionClass: "toast-bottom-right",
+            showDuration: 400,
+            hideDuration: 1000,
+            timeOut: 7000,
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+            onclick: null
+        };
+        var $toast = toastr[itype](msg, title);
+    }
+
+    function getifTmpInfo() {
+        return $(window.frames["ifTmp"].document).find("body").html();
+    }
+</script>
+</body>
+</html>

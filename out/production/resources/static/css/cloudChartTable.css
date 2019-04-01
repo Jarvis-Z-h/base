@@ -1,0 +1,122 @@
+html, body, .footer {
+    width: 1920px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.title {
+    height: 50px;
+}
+
+.bg {
+    background-color: #6ccaff;
+    padding-top: 19px;
+    color: #fff;
+}
+
+.bg h5 {
+    padding-left: 15px;
+    font-weight: bold;
+}
+
+.bg0 {
+    background-color: #086CA2;
+}
+
+.bg1 {
+    background-color: #235B79;
+}
+
+.bg2 {
+    background-color: #034569;
+}
+
+.bg3 {
+    background-color: #FFB300;
+}
+
+.bg4 {
+    background-color: #BF9430;
+}
+
+.bg5 {
+    background-color: #A67400;
+}
+
+.bg6 {
+    background-color: #FF4C00;
+}
+
+.bg7 {
+    background-color: #BF5B30;
+}
+
+.bg8 {
+    background-color: #A63100;
+}
+
+.bg9 {
+    background-color: rgb(56,5,95);
+}
+
+.table {
+    margin-bottom: 0px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th,
+    .table>thead>tr>td, .table>thead>tr>th {
+    padding: 1px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 0;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+
+.colbg1 {
+    background-color: #afe0fc;
+    width: 80px;
+}
+
+.colbg2 {
+    background-color: #6ccaff;
+    width: 80px;
+}
+
+.colbg3 {
+    background-color: #ebebeb;
+    width: 80px;
+}
+
+.colbg4 {
+    background-color: #e3e3e3;
+    width: 80px;
+}
+
+.colbg5 {
+    background-color: #ffffff;
+    width: 80px;
+}
+
+.colbg6 {
+    background-color: #f6f6f6;
+    width: 80px;
+}
+
+.color>tbody>tr>td, .color>tbody>tr>th, .color>tfoot>tr>td, .color>tfoot>tr>th,
+    .color>thead>tr>td, .color>thead>tr>th {
+    color: #000;
+}
+
+.border {
+    border-right: 1px solid #ebebeb;
+}
+
+.h4, .h5, .h6, h4, h5, h6 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}

@@ -1,0 +1,17 @@
+
+
+spring.profiles.active: void
+
+server.tomcat.access-log-enabled: true
+spring.datasource.sql-script-encoding: utf-8
+
+#禁用掉模板引擎的缓存
+
+server:
+  port: 9090
+
+
+#禁用掉模板引擎的缓存
+spring:
+  thymeleaf:
+    cache: false

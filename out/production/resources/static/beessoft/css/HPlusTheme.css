@@ -1,0 +1,64 @@
+/*在这里可以快速更改后台颜色配色方案*/
+
+/*顶部栏颜色*/
+.navbar-fixed-top {
+    background: #143E76;
+}
+
+/*旧格式的顶部栏颜色*/
+.navbar-static-top{
+    background: #143E76;
+}
+
+/*左侧未展开菜单颜色*/
+.navbar-static-side {
+    background: #24509B;
+}
+
+/*菜单字体颜色*/
+.nav > li > a {
+    color: #f7f7f7;
+}
+
+/*鼠标移入菜单，菜单所变颜色，点击之后菜单固定的颜色*/
+.navbar-default .nav > li > a:focus, .navbar-default .nav > li > a:hover {
+    background-color: #1E59C9 !important;
+}
+
+/*展开的那一级菜单，一级菜单颜色*/
+.nav > li.active > a {
+    background: #1E59C9;
+}
+
+/*展开的那一级菜单，二级菜单颜色，以及左侧边框颜色*/
+.nav > li.active {
+    background: #143E76;
+    border-left: 3px solid #4397ED;
+}
+
+/*右侧顶部选项卡，激活状态，鼠标移入颜色*/
+.page-tabs a.active i:hover, .page-tabs a.active:hover {
+    background: #1b4eaf;
+    color: #ffffff;
+}
+
+/*右侧顶部选项卡，未激活状态，鼠标移入颜色*/
+.content-tabs .roll-nav:hover, .page-tabs a:hover {
+    background: #edf1f2;
+}
+
+/*右侧顶部选项卡，激活状态颜色*/
+.page-tabs a.active {
+    background: #1E59C9;
+    color: #f3f7f8;
+}
+
+/*右侧顶部选项卡，底部边线及颜色*/
+.content-tabs {
+    border-bottom: solid 2px #405CAD;
+}
+
+.welcomeuser a{
+    color: #ffffff;
+    font-weight: 500;
+}

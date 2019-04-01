@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--管理员添加某一个员工的页面-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+
+    <title>添加员工</title>
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet"></link>
+
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/dashboard.css" th:href="@{/asserts/css/dashboard.css}" rel="stylesheet"></link>
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/user/addUser}" method="post">
+                <!--页面是修改页面才会有这个input框，而且才会发送put请求-->
+              <!-- <input type="hidden" name="_method" value="put" th:if="${editUser!= null}"></input>-->
+                <div class="form-group">
+                    <label>工号</label>
+                    <input type="text" name="id" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                    <label>Code</label>
+                    <input type="text" name="code" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                    <label>姓名</label>
+                    <input type="text" name="name" class="form-control" ></input>
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="text" name="password" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                    <label>性别</label><br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender"  value="1"></input>
+                        <label class="form-check-label">男</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender"  value="0"></input>
+                        <label class="form-check-label">女</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>角色</label>
+                    <!--th:selected="${user!=null}?${user.id==role.id}"-->
+                    <select class="form-control" name="role">
+                        <!--th:value="${dept.id}"  是需要提交的部门Id-->
+                        <option th:value="${role.id}" th:each="role:${roleList}" th:text="${role.roleName}">1</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>联系方式</label>
+                    <input type="text" name="telephone" class="form-control" th:value="${editUser!=null}?${editUser.telephone}"></input>
+                </div>
+                <div class="form-group">
+                    <label>状态</label><br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status"  value="1" th:checked="${user!=null}?${user.status=='1'}"></input>
+                        <label class="form-check-label">开启</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status"  value="0" th:checked="${editUser!=null}?${editUser.status=='0'}"></input>
+                        <label class="form-check-label">关闭</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" th:value="${editUser!=null}?'修改':'添加'">添加</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js" th:src="@{/webjars/jquery/3.0.0/jquery.js}"></script>
+<script type="text/javascript" src="asserts/js/popper.min.js" th:src="@{/webjars/popper.js/1.11.1/dist/popper.js}"></script>
+<script type="text/javascript" src="asserts/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.js}"></script>
+
+<!-- Icons -->
+<script type="text/javascript" src="asserts/js/feather.min.js" th:src="@{/asserts/js/feather.min.js}"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script type="text/javascript" src="asserts/js/Chart.min.js" th:src="@{/asserts/js/Chart.min.js}"></script>
+
+</body>
+
+</html>

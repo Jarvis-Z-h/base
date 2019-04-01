@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<title>Signin Template for Bootstrap</title>
+	<!-- Bootstrap core CSS -->
+	<link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet"></link>
+	<!-- Custom styles for this template -->
+	<link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet"></link>
+</head>
+
+<body class="text-center">
+<form class="form-signin" action="#" th:action="@{/login/verify}" method="post">
+	<img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" src="asserts/img/bootstrap-solid.svg" alt="" width="72" height="72"></img>
+	<h1 class="h3 mb-3 font-weight-normal">请登录</h1>
+	<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+	<label class="sr-only">用户名</label>
+	<input type="text" name="id" class="form-control" placeholder="用户名" required="" autofocus=""></input>
+	<label class="sr-only">密码</label>
+	<input type="password" name="password" class="form-control" placeholder="密码" required=""></input>
+	<div class="checkbox mb-3">
+		<label>
+			<input type="checkbox" value="remember-me">记住我</input>
+		</label>
+	</div>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+	<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+	<!--th:href="@{/index.html(l='zh_CN')}"
+	 th:href="@{/index.html(l='en_US')}"
+	-->
+	<a class="btn btn-sm">中文</a>
+	<a class="btn btn-sm">English</a>
+</form>
+
+</body>
+
+</html>

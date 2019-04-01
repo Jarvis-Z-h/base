@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>添加用户</title>
+    <link rel="stylesheet" href="common/layui/css/layui.css" th:href="@{/common/layui/css/layui.css}"></link>
+
+    <link rel="stylesheet" href="common/zTree-3.5/css/metroStyle/metroStyle.css" th:href="@{/common/zTree-3.5/css/metroStyle/metroStyle.css}"></link>
+    <link rel="stylesheet" href="beessoft/css/ztree.css" th:href="@{/beessoft/css/ztree.css}"></link>
+
+</head>
+<body>
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<div class="layui-container">
+    <!--主页面的挂框上的而且能叉掉的框上的第1部分 div开始 -->
+    <div class="layui-row" style="margin-top: 20px;">
+        <div class="layui-col-md5 layui-col-md-offset2 layui-col-xs12">
+            <form class="layui-form" lay-filter="form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户工号</label> <input name="id" type="text" lay-verify="required"
+                                                                        autocomplete="off"
+                                                                        lay-verType="tips" class="layui-input"></input>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户姓名</label> <input name="name" type="text" lay-verify="required"
+                                                                        autocomplete="off"
+                                                                        lay-verType="tips" class="layui-input"></input>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户密码</label> <input name="password" type="text" lay-verify="required"
+                                                                        autocomplete="off"
+                                                                        lay-verType="tips" class="layui-input"></input>
+                </div>
+                <!--动态生成的这个角色下拉选-->
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="width: 60px;">角色</label>
+                    <div class="layui-input-inline">
+                        <!--这个roleList是在JumpController里得到过后存着的，-->
+                        <select name="role" th:each="role:${roleList}" id="role" lay-verify="required"  lay-filter="roleSelect">
+                            <option value="">请选择</option>
+                            <option th:text="${role.roleName}" th:value="${role.roleId}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">联系方式</label> <input name="telephone" type="text" lay-verify="required"
+                                                                        autocomplete="off"
+                                                                        lay-verType="tips" class="layui-input"></input>
+                </div>
+                <div class="layui-input-block">
+                    <label class="layui-form-label">状态值</label>
+                    <!--后端提交的value值-->
+                    <input type="radio" name="status" value="0" title="禁止"></input>
+                    <input type="radio" name="status" value="1" title="开启"></input>
+
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button id="submit" class="layui-btn" lay-filter="*">立即提交</button>
+                        <button id="cancel" type="button" class="layui-btn layui-btn-primary">取消</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <!--主页面的挂框上的而且能叉掉的框上的第1部分 div结束 -->
+</div>
+<!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览
+请注意：如果不加载form模块，select、checkbox、radio等将无法显示，并且无法使用form相关功能
+-->
+<script src="common/js/jquery-3.3.1.js" th:src="@{/common/js/jquery-3.3.1.js}"></script>
+<script src="common/layui/layui.js" th:src="@{/common/layui/layui.js}"></script>
+
+<script src="common/zTree-3.5/js/jquery.ztree.core.js" th:src="@{/common/zTree-3.5/js/jquery.ztree.core.js}"></script>
+<script src="common/zTree-3.5/js/jquery.ztree.excheck.js" th:src="@{/common/zTree-3.5/js/jquery.ztree.excheck.js}"></script>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+
+    });
+</script>
+
+<script>
+    //var type = "add";
+    //  var roleCode=$("#role").val();
+    /*  $(function () {
+       <!--修改-->
+        <!--通过得到页面一个隐藏的inut空间，得到里面的val值，判断这是一个修改页面的画，-->
+        if ($("#type").val() === "edit") {
+            $("[name='userCode']").attr("readonly", "readonly").after('<div class="layui-form-mid layui-word-aux">用户编码不能修改</div>');
+            type = "edit";
+            /!*重新赋初值*!/
+            layui.use("form", function () {
+                var form = layui.form;
+                form.val("form", {
+                    <!--这是修改页面嘛，需要把要修改的对象传过来，然后把对应的属性写到修改页面对应的框-->
+                    "id": "${user.id}",
+                    "name": "${user.name}",
+                    "roleId": "${user.roleId}",
+                    <!--  "cteDate":" ${mgrUserVO.cteDate}",-->
+                    <!--   "modifyDate": "${mgrUserVO.modifyDate}",-->
+                    "telephone": "${user.telephone}",
+                    //选择表达式
+                    "status": "${user.status}"
+                });
+                form.render();
+            });
+        }
+    });*/
+        /*保存操作*/
+        <!--根据是修改页面还是添加页面，发送修改请求或是添加请求，数据给控制层，再放到数据库-->
+        <!--这个巧妙的设计都是放在那个路径的后面dealType-->
+        layui.use("form", function () {
+            var dealType = "";
+            var form = layui.form;
+            form.on('submit(*)', function (data) {
+
+                $("#submit").addClass("layui-btn-disabled");
+                $("#submit").attr("disabled", "disabled");
+
+                $.ajax({
+                    //这个dealType是决定发送修改页面，还是添加页面
+                    url: path + "/user/addUser",
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {
+                        id: data.field.id,
+                        name: data.field.name,
+                        password: data.field.password,
+                        //  createdTime: data.field.cteDate,    //创建日期一会儿后台自动生成
+                        //  updatedTime: data.field.modifyDate,    //最后修改日期一会儿后台自动生成
+
+                        //这里是捕获表达上name属性值为roleCode的那个下拉选里的值
+                        roleId: data.field.roleId,
+                        status: data.field.status
+                    },
+
+                    success: function (data) {
+                        if (data.code === "success") {
+                            window.parent.showMsg("保存成功", "success", "提示信息");
+                            _close();
+                        } else {
+                            window.parent.showMsg(data.msg, "error", "提示信息");
+                            $("#submit").removeClass("layui-btn-disabled");
+                            $("#submit").removeAttr("disabled");
+                        }
+                    },
+                    error: function () {
+                        alert("保存失败，请稍后刷新重试");
+                    }
+                });
+                return false;
+            });
+        });
+        $("#cancel").on("click", function () {
+            _close();
+        });
+
+        function _close() {
+            $(window.parent.document).find(".J_menuTabs").find("a:contains('人员管理')").addClass("active");
+            var i = 0;
+            $(window.parent.document).find(".J_iframe").each(function () {
+                if ($(this).data().id == '${pageContext.request.contextPath}/jump/jump?type=user_maneger') {
+                    $(this).css("display", "inline");
+                    parent[i].window._reload();
+                }
+                i++;
+            });
+            if (type === "edit") {
+                <!--iframe后面是gcc方法的第二个参数-->
+                $(window.parent.document).find("[name='iframeEditUser']").remove();
+            } else {
+                <!--iframe后面是gcc方法的第二个参数-->
+                $(window.parent.document).find("[name='iframeAddUser']").remove();
+            }
+        }
+
+        function hiddenTreeDepPower() {
+            $(".ztree-b").fadeOut("fast");
+            $("body").off("mousedown", onBodyDownDepPower);
+        }
+
+
+
+
+</script>
+</body>
+</html>

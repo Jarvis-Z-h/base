@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8"></meta>
+    <title>管理人员表</title>
+    <meta name="renderer" content="webkit"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+    <link rel="stylesheet" href="/common/layui/css/layui.css" th:href="@{/common/layui/css/layui.css}"></link>
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<div class="layui-inline">
+    <label class="layui-form-label" style="width:120px;">人员编号/名称</label>
+    <div class="layui-input-inline" style="width: 200px;">
+        <input type="text" name="userCode" id="userCode" placeholder="要搜索的人员id" class="layui-input"
+               autocomplete="off"></input>
+    </div>
+</div>
+<div class="layui-inline">
+        <button id="add" class="layui-btn layui-btn-normal" type="button">
+            <i class="layui-icon">&#xe61f;</i>
+            新增
+        </button>
+</div>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<!--基本路径-->
+<script type="text/javascript" src="script/basevalue.js" th:src="@{/script/basevalue.js}"></script>
+
+<script src="common/js/jquery-3.3.1.js" th:src="@{/common/js/jquery-3.3.1.js}"></script>
+<script src="common/layui/layui.js" th:src="@{/common/layui/layui.js}"></script>
+
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+            elem: '#test'
+            , url: path + '/user/getUserList'
+            , dataType: 'json'
+            // ,toolbar: '#toolbarDemo'
+            , method: 'post'
+            // ,tool: '#barDemo'
+            , title: '用户数据表'
+            , cols: [[
+                //{type: 'checkbox', fixed: 'left'}
+                {field: 'id', title: '用户工号', width: 80, fixed: 'left', unresize: true, sort: true}
+                , {field: 'name', title: '用户名', width: 120, edit: 'text'}
+                /* ,{field:'gender', title:'邮箱', width:150, edit: 'text', templet: function(res){
+                         return '<em>'+ res.email +'</em>'
+                     }}*/
+                , {field: 'gender', title: '性别', width: 80, edit: 'text', templet: '#forGender'}
+                , {field: 'roleName', title: '角色', width: 100}
+                , {field: 'telephone', title: '联系方式'}
+                , {field: 'createdTime', title: '创建时间', width: 100, sort: true}
+                , {field: 'updatedTime', title: '最后修改时间', width: 120}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
+            ]]
+            , page: true
+        });
+
+        //监听行工具事件
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            // alert(obj);
+            console.log(obj);   //控制台打印对象
+            if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                  //  alert(data.id);
+                    var deleteId = data.id;
+                    //发送ajax到后台，真的删除这个数据
+                    $.ajax({
+                        url: path + '/user/deleteUserById',
+                        data: {"id": deleteId},
+                        type: 'post',
+                        dataType: 'json',
+                        success: function (data) {
+                            if(data.code=="success"){
+                                layer.msg(data.msg);
+                            }
+                        },
+                        error: function (data) {
+                            if(data.code=="faile"){
+                                layer.msg(data.msg);
+                            }
+                        }
+                    });
+                   obj.del();
+                 //   layer.close(index);
+                   // alert(index);
+                });
+            } else if (obj.event === 'edit') {
+                alert("修改的用户id是："+data.id);
+                alert("修改的用户id是："+data.roleId);
+                //用户修改按钮
+                window.parent.gcc(path+"/jump/userForm?code="+data.code+";id="+data.id +";name="+ data.name  + ";gender=" + data.gender   + ";roleId=" + data.roleId + ";telephone=" + data.telephone + ";status=" + data.status, "EditUser", "修改人员");
+            }
+        });
+    });
+//页面的新增按钮的点击事件
+    $("#add").on("click", function () {
+        //这个gcc方法，第一个参数是要跳转的页面的地址，第二个参数是跳转页面的名字，第三个是页面上头的名字
+        window.parent.gcc(path+"/jump/toAddPage", "AddUser", "增加人员");
+        //  _reload();
+    });
+</script>
+<!--对性别进行前端的进一步处理，0显示女生   1显示男生-->
+<script type="text/html" id="forGender">
+    {{#if (d.gender == 1) { }}
+    <span>男</span>
+    {{# }else if(d.gender == 0){ }}
+    <span>女</span>
+    {{# } }}
+</script>
+
+</body>
+</html>

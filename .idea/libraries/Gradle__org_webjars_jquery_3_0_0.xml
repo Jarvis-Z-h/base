@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.webjars:jquery:3.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars/jquery/3.0.0/cb5f5f489e595259cee33239f0cbe8ddb5a9c0d1/jquery-3.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars/jquery/3.0.0/b7edbb27103a5762fc1080c39fa6fc9d80ae03aa/jquery-3.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

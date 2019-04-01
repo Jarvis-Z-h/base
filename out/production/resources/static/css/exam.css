@@ -1,0 +1,53 @@
+body,.page-current{
+	background: #FFFFFF;
+}
+.list-block{
+	margin: 0;
+}
+.list-block ul:after{
+	height:0;
+}
+.e-border-bottom{
+	border-bottom: 1px solid #e7e7e7;
+}
+.e-color-9{
+	color: #999999;
+}
+.list-block ul:before{
+	height: 0;
+}
+.e-clear-h:before{
+	height: 0;
+}
+.e-row .col-100{
+	padding-left: 0.75rem;
+	position: relative;
+	height: 1.5rem;
+}
+input[type=checkbox],input[type=radio] {
+    position: absolute;
+    top: 4px;
+    right: 20px;
+    display: inline-block;
+    width: 28px;
+    height: 26px;
+    border: 0;
+    outline: 0!important;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+input[type=checkbox]:before {
+    content: "";
+}
+input[type=checkbox]:before, input[type=radio]:before {
+    font-family: "iconfont-sm" !important;
+    text-decoration: none;
+    color: #aaa;
+    border-radius: 0.7rem;
+    background: 0 0;
+    -webkit-font-smoothing: antialiased;
+    height: 1.4rem;
+    width: 1.4rem;
+    background: #34A6F6;
+    display: inline-block;
+}

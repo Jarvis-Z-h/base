@@ -1,0 +1,21 @@
+body.signin{
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/login-background.jpg',sizingMethod='scale');
+}
+.ie8-fl{
+	float: left;
+}
+.ie8-fr{
+	float: right;
+}
+.signinpanel form{
+    border: 1px solid rgba(255,255,255,.3);
+    *zoom:1;
+     background:rgba(255,255,255,.2); 
+     filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#EBDFBB,endcolorstr=#EBDFBB);
+     behavior: url(iecss3.htc);
+     position:relative; 
+     z-index:2;
+     -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}

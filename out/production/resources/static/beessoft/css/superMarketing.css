@@ -1,0 +1,195 @@
+html {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.box {
+    /*background-image: url('../newImg/boxbg.png');
+    background-repeat: no-repeat;
+    background-position:145px 271px;
+    background-size: auto;
+    */
+    width: 1240px;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+    transform: scale(0.75);
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    -ms-transform: scale(0.75);
+    -o-transform: scale(0.75);
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: -1;
+    padding-bottom: 13px;
+    height: 28.61111111111111%;
+    background-color: #D6E6FE;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 18px;
+}
+
+.bg-img {
+    height: auto;
+    position: absolute;
+    /* left: 16.25%; */
+    /* top: 484px; */
+    /* top: 44.81481481481481%; */
+    max-width: 35%;
+    left: 0;
+    top: 16.11111111111111%;
+    z-index: 9;
+}
+
+.form {
+    width: 380px;
+    height: 480px;
+    /*     
+    width: 357px;
+    height: 507px; */
+    position: absolute;
+    /* top: 292px; */
+    top: 22%;
+    right: 0;
+    z-index: 10;
+    background-color: #fff;
+    background-image: url('../../images/superMarketing/loginbg.png');
+    background-repeat: no-repeat;
+    background-position: center 40px;
+    box-shadow: 0 0 20px rgba(15, 62, 196, 0.2);
+}
+
+.form-item {
+    width: 85%;
+    height: 50px;
+    position: relative;
+    border: 1px solid #EDEDED;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -o-transition: all .2s linear;
+}
+
+.form-item:hover {
+    box-shadow: 0 0 15px #ddffdd;
+}
+
+.form-item input {
+    text-indent: 60px;
+    letter-spacing: 2px;
+    outline: none;
+    border: none;
+}
+
+.form-item input,
+button {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.form-item:first-child {
+    margin-top: 150px;
+}
+
+.form-item [type=button] {
+    background-color: #4285F4;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 10px;
+    text-indent: 0px;
+}
+
+.form-item [type=button]:active {
+    color: gold;
+}
+
+.img-label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.verfiy {
+    position: absolute;
+    height: 100%;
+    width: 130px;
+    right: 0;
+    top: 0;
+}
+
+.verfiy::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 80%;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    width: 2px;
+    background-color: #EDEDED;
+}
+
+.verfiy img {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (min-width: 1440px) {
+    .box {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+    }
+}
+
+/* @media screen and (min-width:1920px) {
+    .box {
+        transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        -moz-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        -o-transform: scale(0.95);
+    }
+} */

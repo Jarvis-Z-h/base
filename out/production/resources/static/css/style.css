@@ -1,0 +1,57 @@
+.ui-jqgrid .ui-jqgrid-bdiv table.table-bordered td {
+    text-overflow: ellipsis;
+}
+.tree-content{
+	position: relative;
+}
+
+.menuContent{
+	background-color: #fff;
+	display: none;
+}
+.combo-tree{
+	height: 200px;
+	overflow: auto;
+	position: absolute;
+}
+.h100{
+	height: 100%;
+}
+.gray-bg{
+	background-color: #ffffff !important;
+	height: 100%;
+	overflow: hidden;
+}
+#dataTable td,.ui-jqgrid-labels th div{
+	font-size: 14px;
+	
+}
+.btn-f{
+	margin-left: 20px;
+}
+.form-horizontal .form-control{
+	width: 60% !important;
+}
+.inline-block,help-block{
+	display: inline-block !important;
+}
+.form-control.error{
+	border: 1px solid #ed5565 !important;
+}
+.layer-date{
+	width: 150px !important;
+	max-width: 150px !important;
+	cursor: pointer;
+}
+.cler-padd-left{
+	padding-left: 0;
+}
+.cler-padd-right{
+	padding-right: 0;
+}
+.checkztree{
+	margin-top:0; width:300px; height: 400px;overflow: auto;
+}
+.menuContent{
+	display:none; position: absolute;
+}

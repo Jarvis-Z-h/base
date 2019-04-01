@@ -1,0 +1,70 @@
+.btn_tm{
+    background: black;
+    color: white;
+    border: none;
+    margin-right: 5px;
+    transition: all 0.5s linear;
+    height: 38px;
+    display: inline-block;
+    width: 88px;
+}
+.btn_tm:hover{
+
+}
+.cred{
+    background: #FF5722;
+}
+.cblue{
+    background: #1E9FFF;
+}
+.ccolor{
+    background: #009688;
+}
+.dnone{
+    display: none;
+    max-width: 500px;
+    padding: 15px;
+}
+.dshow{
+    display: block;
+}
+.btn-group-tm{
+    margin-top: 50px;
+    text-align: center;
+}
+#list-tm{
+    width: 88px;
+    position: absolute;
+    background: white;
+    border: 1px solid #ebeef5;
+    -webkit-box-shadow:0 2px 12px 0 rgba(0,0,0,.1);
+    -moz-box-shadow:0 2px 12px 0 rgba(0,0,0,.1);
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    margin-top: 15px;
+    z-index: 999;
+    cursor: pointer;
+}
+#list-tm:before{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 12px 12px 0 12px;
+    border-color: #fff transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -12px;
+    transform: rotate(180deg);
+    left: 10%;
+}
+#list-tm p{
+    text-align: center;
+    margin-top: 15px;
+}
+.ui-jqgrid tr.jqgrow td:last-child{
+    white-space: initial;
+}
+.ui-jqgrid tr.jqgrow td {
+    white-space: initial;
+}
+
